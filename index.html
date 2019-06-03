@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="bg1" style="background-image: url(west.jpg); height: 1000px; width: 100%; background-size: 100% 100%">
+
+		<h1 class="score ml-5" >0</h1>
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 20%; margin-top: 19%; ">
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 60%; margin-top: 16%; ">
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 70%; margin-top: 20%; ">
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 10%; margin-top: 12%; ">
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 40%; margin-top: 13%; ">
+		<img class="enemy1 q1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 80%; margin-top: 8%; ">
+
+		<img class="enemy2  q1" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 10%; margin-top: 30%; ">
+		<img class="enemy2 q1" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 40%; margin-top: 30%; ">
+		<img class="enemy2 q1" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 60%; margin-top: 30%; ">
+		<img class="enemy2 q1" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 30%; margin-top: 24%; ">
+	
+		<img class="enemy3  q1" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 0%; margin-top: 20%; ">
+		<img class="enemy3 q1" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 25%; margin-top: 10%; ">
+		<img class="enemy3 q1" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 50%; margin-top: 24%; ">
+		<img class="enemy3 q1" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 70%; margin-top: 35%; ">
+		<img class="enemy3 q1" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 90%; margin-top: 20%; ">
+		<a href="" class="btn1" style="position: absolute; margin-left: 50%; display: none;">
+			<button>Restart</button>
+		</a>
+
+	</div>
+	<script>
+	let cowboy1 = document.querySelectorAll(".enemy1")
+	let cowboy2 = document.querySelectorAll(".enemy2")
+	let cowboy3 = document.querySelectorAll(".enemy3")
+	let score = document.querySelector(".score") 
+	let ochki = 0
+	let q1 = document.querySelectorAll(".q1") 
+
+	let func = function(arg) { 
+		ochki = ochki + arg 
+		score.innerHTML = ochki
+
+	}
+	
+
+	for(let index = 0; index<6; index = index + 1){
+		cowboy1[index].onclick = function() {
+			cowboy1[index].style.display = "none"
+			func(10)
+		}
+	}
+
+	for(let index = 0; index<4; index = index + 1){
+		cowboy2[index].onclick = function() {
+			cowboy2[index].style.display = "none"
+			func(20)
+		}
+	}
+
+	for(let index = 0; index<5; index = index + 1){
+		cowboy3[index].onclick = function() {
+			cowboy3[index].style.display = "none"
+			func(30)
+		}
+	}
+
+	let proverka = function() {
+		for(let index = 0; index<15; index = index + 1){
+			q1[index].style.opacity = "0"
+			q1[index].style.transition = "2s"
+		}
+		if ( ochki == 0 ) {
+		alert("You lose")
+		document.querySelector(".bg1").style.backgroundImage = "url(youdied.jpg)"
+		document.querySelector(".bg1").style.opacity = "1"
+		document.querySelector(".bg1").style.transition = "2.5s"
+		document.querySelector(".bg1").style.backgroundSize = "100% 100%"
+		document.querySelector(".btn1").style.display = "block"
+
+		} 
+		else {
+			alert("You won")
+		}
+	}
+
+	setTimeout(proverka,2000) 
+
+
+
+
+
+	</script>
+</body>
+</html>
